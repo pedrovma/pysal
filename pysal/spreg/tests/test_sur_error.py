@@ -7,7 +7,7 @@ from pysal.common import RTOL
 
 PEGP = pysal.examples.get_path
 
-def test_dic(actual, desired, rtol):
+def dict_compare(actual, desired, rtol):
     for i in actual.keys():
         np.testing.assert_allclose(actual[i],desired[i],rtol)
 
@@ -27,11 +27,11 @@ class Test_SUR_error(unittest.TestCase):
                   name_bigy=bigyvars0,name_bigX=bigXvars0,spat_diag=True,\
                   name_w="natqueen",name_ds="natregimes",nonspat_diag=False)
 
-        test_dic(reg.bSUR0,{0: np.array([[ 5.18423225],[ 0.67757925],
+        dict_compare(reg.bSUR0,{0: np.array([[ 5.18423225],[ 0.67757925],
         [ 0.25706498]]), 1: np.array([[ 3.79731807],[ 1.02411196],[ 0.35895674]])},RTOL)
-        test_dic(reg.bSUR,{0: np.array([[ 4.0222855 ],[ 0.88489646],[ 0.42402853]]),\
+        dict_compare(reg.bSUR,{0: np.array([[ 4.0222855 ],[ 0.88489646],[ 0.42402853]]),\
          1: np.array([[ 3.04923009],[ 1.10972634],[ 0.47075682]])},RTOL)
-        test_dic(reg.sur_inf,{0: np.array([[  3.66921814e-01,   1.09622414e+01,   5.80436964e-28],\
+        dict_compare(reg.sur_inf,{0: np.array([[  3.66921814e-01,   1.09622414e+01,   5.80436964e-28],\
         [  1.41290774e-01,   6.26294579e+00,   3.77771972e-10],\
         [  4.26795440e-02,   9.93517021e+00,   2.92675677e-23]]),\
          1: np.array([[  3.31399691e-01,   9.20106497e+00,   3.54419478e-20],\
@@ -57,9 +57,9 @@ class Test_SUR_error(unittest.TestCase):
                   name_bigy=bigyvars0,name_bigX=bigXvars0,\
                   name_w="natqueen",name_ds="natregimes")
 
-        test_dic(reg.bSUR,{0: np.array([[ 4.0222855 ],[ 0.88489646],[ 0.42402853]]),\
+        dict_compare(reg.bSUR,{0: np.array([[ 4.0222855 ],[ 0.88489646],[ 0.42402853]]),\
          1: np.array([[ 3.04923009],[ 1.10972634],[ 0.47075682]])},RTOL)
-        test_dic(reg.sur_inf,{0: np.array([[  3.66921814e-01,   1.09622414e+01,   5.80436964e-28],\
+        dict_compare(reg.sur_inf,{0: np.array([[  3.66921814e-01,   1.09622414e+01,   5.80436964e-28],\
         [  1.41290774e-01,   6.26294579e+00,   3.77771972e-10],\
         [  4.26795440e-02,   9.93517021e+00,   2.92675677e-23]]),\
          1: np.array([[  3.31399691e-01,   9.20106497e+00,   3.54419478e-20],\
@@ -89,13 +89,13 @@ class Test_SUR_error(unittest.TestCase):
         reg = SURerrorML(bigy1,bigX1,self.w,name_bigy=bigyvars1,name_bigX=bigXvars1,\
             name_w="natqueen",name_ds="natregimes")        
 
-        test_dic(reg.bSUR0,{0: np.array([[ 4.50407527],[ 2.39199682],[ 0.52723694]]), 1: np.array([[ 7.44509818],\
+        dict_compare(reg.bSUR0,{0: np.array([[ 4.50407527],[ 2.39199682],[ 0.52723694]]), 1: np.array([[ 7.44509818],\
         [ 3.74968571],[ 1.28811685],[-0.23526451]]), 2: np.array([[ 6.92761614],[ 3.65423052],\
         [ 1.38247611]])},RTOL)
-        test_dic(reg.bSUR,{0: np.array([[ 4.474891  ],[ 2.19004379],[ 0.59110509]]), 1: np.array([[ 7.15676612],\
+        dict_compare(reg.bSUR,{0: np.array([[ 4.474891  ],[ 2.19004379],[ 0.59110509]]), 1: np.array([[ 7.15676612],\
        [ 3.49581077],[ 1.12846288],[-0.17133968]]), 2: np.array([[ 6.91550936],[ 3.69351192],\
        [ 1.40395543]])},RTOL)
-        test_dic(reg.sur_inf,{0: np.array([[  1.34555859e-001,   3.32567528e+001,   1.63042050e-242],\
+        dict_compare(reg.sur_inf,{0: np.array([[  1.34555859e-001,   3.32567528e+001,   1.63042050e-242],\
        [  1.20531820e-001,   1.81698362e+001,   8.94650541e-074],\
        [  1.09265711e-001,   5.40979573e+000,   6.30966781e-008]]),\
          1: np.array([[  2.95769241e-001,   2.41971271e+001,   2.38517181e-129],
