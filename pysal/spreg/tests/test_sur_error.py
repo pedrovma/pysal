@@ -71,9 +71,12 @@ class Test_SUR_error(unittest.TestCase):
           2.11105214e-01,   6.39785285e-02],[ -5.55994101e-04,  -5.46893937e-04,   2.11105214e-01,\
           3.42890248e-01,   1.91931389e-01],[ -1.63239040e-04,  -3.10498019e-03,   6.39785285e-02,\
           1.91931389e-01,   5.86933821e-01]]),RTOL)
-        np.testing.assert_allclose(reg.lamsetp,(np.array([[ 0.02036235],\
-        [ 0.02129889]]), np.array([[ 26.69730489],[ 23.68454458]]), np.array([[  5.05846638e-157],\
-        [  5.20352683e-124]])),RTOL)
+        np.testing.assert_allclose(reg.lamsetp[0],np.array([[ 0.02036235],[ 0.02129889]]),RTOL)
+        np.testing.assert_allclose(reg.lamsetp[1],np.array([[ 26.69730489],[ 23.68454458]]),RTOL)
+        np.testing.assert_allclose(reg.lamsetp[2],np.array([[  5.05846638e-157],[  5.20352683e-124]]),RTOL)
+        #np.testing.assert_allclose(reg.lamsetp,(np.array([[ 0.02036235],\
+        #[ 0.02129889]]), np.array([[ 26.69730489],[ 23.68454458]]), np.array([[  5.05846638e-157],\
+        #[  5.20352683e-124]])),RTOL)
         np.testing.assert_allclose(reg.joinlam,(1207.81269, 2, 5.33096785e-263))
         np.testing.assert_allclose(reg.surchow,[(5.1073696860799931, 1, 0.023824413482255974),
         (1.9524745281321374, 1, 0.16232044613203933),
@@ -102,9 +105,9 @@ class Test_SUR_error(unittest.TestCase):
        [  1.482144e-001,   2.358618e+001,   5.343318e-123],\
        [  1.344687e-001,   8.392014e+000,   4.778835e-017],\
        [  5.378335e-002,  -3.185738e+000,   1.443854e-003]]),\
-         2: np.array([[  1.50052833e-001,   4.60871628e+001,   0.00000000e+000],\
-       [  1.23633986e-001,   2.98745684e+001,   4.21160532e-196],\
-       [  1.19498912e-001,   1.17486881e+001,   7.17236659e-032]])},RTOL)
+         2: np.array([[  1.500528e-001,   4.608718e+001,   0.000000e+000],\
+       [  1.236340e-001,   2.987457e+001,   4.210941e-196],\
+       [  1.194989e-001,   1.174869e+001,   7.172248e-032]])},RTOL)
         np.testing.assert_allclose(reg.lamols,np.array([[ 0.4248829 ],[ 0.46428101],[ 0.42823999]]),RTOL)
         np.testing.assert_allclose(reg.lamsur,np.array([[ 0.36137603],[ 0.38321666],[ 0.37183716]]),RTOL)
         np.testing.assert_allclose(reg.corr,np.array([[ 1.,          0.24563253,  0.14986527],\
