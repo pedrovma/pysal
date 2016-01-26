@@ -80,9 +80,7 @@ class Test_SUR_error(unittest.TestCase):
         (0.79663667463065702, 1, 0.37210085476281407)],RTOL)
         np.testing.assert_allclose(reg.likrlambda,(1014.0319285186415, 2, 6.3938800607190098e-221))
         np.testing.assert_allclose(reg.lrtest, (287.95821154104488, 1, 1.3849971230596533e-64))
-        np.testing.assert_allclose(reg.lamtest[0], 1.8693306894921564)
-        np.testing.assert_allclose(reg.lamtest[1], 1)
-        np.testing.assert_allclose(reg.lamtest[2], 0.1715520)
+        np.testing.assert_allclose(reg.lamtest, (1.8693306894921564, 1, 0.17155175615429052))
 
     def test_error_3eq(self): #Three equation example, unequal K
         y_var1 = ['HR60','HR70','HR80']
